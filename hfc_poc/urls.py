@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+
+from hfc_poc.core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('upload/', views.upload),
+    path('upload/documents/', views.get_loan_numbers),
+    path('upload/documents/show/', views.get_json_response),
+    path('', TemplateView.as_view(template_name='core/upload.html')),
 ]

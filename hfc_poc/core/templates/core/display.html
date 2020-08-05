@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HFC</title>
+</head>
+<body>
+<form method="post" action="show/" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if loan_number_list %}
+    <label>Select loan number:</label>
+    <select name="loan_number">
+        {% for loan_number in loan_number_list %}
+        <option>{{ loan_number }}</option>
+        {% endfor %}
+    </select>
+    <br/>
+    <br/>
+    <label>Document Type:</label>
+    <select name="document_type">
+        <option>PAN Card</option>
+        <option>Aadhar Card</option>
+        <option>Passport</option>
+    </select>
+    <br/>
+    <br/>
+    <button type="submit">Submit</button>
+    {% else %}
+    <p>No data available.</p>
+    {% endif %}
+</form>
+</body>
+</html>
